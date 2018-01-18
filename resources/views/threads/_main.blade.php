@@ -41,7 +41,9 @@
                  alt="{{ $thread->creator->name }}" width="25" height="25" class="mr-1">
 
             <span class="flex">
-                <a href="{{ route('profile', $thread->creator) }}">{{ $thread->creator->name }}</a> posted:
+                <a href="{{ route('profile', $thread->creator) }}">
+                    {{ $thread->creator->name }} ({{ $thread->creator->reputation }} XP)
+                </a> posted:
                 <span v-text="title"></span>
             </span>
         </div>

@@ -42,6 +42,8 @@ class Thread extends Model
             // $thread->replies()->delete();
             // the below forces the trigger of the static deleting for Reply defined in RecordsActivity
             $thread->replies->each->delete();
+
+            Reputation::reduce($thread->creator, Reputation::THREAD_WAS_PUBLISHED);
         });
 
         static::created(function ($thread) {

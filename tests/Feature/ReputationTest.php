@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Reputation;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -14,7 +15,7 @@ class ReputationTest extends TestCase
     {
         $thread = create('App\Thread');
 
-        $this->assertEquals(10, $thread->creator->reputation);
+        $this->assertEquals(Reputation::THREAD_WAS_PUBLISHED, $thread->creator->reputation);
     }
 
     /** @test */
@@ -27,7 +28,7 @@ class ReputationTest extends TestCase
             'body' => 'Here is a reply.',
         ]);
 
-        $this->assertEquals(2, $reply->owner->reputation);
+        $this->assertEquals(Reputation::REPLY_POSTED, $reply->owner->reputation);
     }
     
     /** @test */
@@ -42,6 +43,6 @@ class ReputationTest extends TestCase
 
         $thread->markBestReply($reply);
 
-        $this->assertEquals(52, $reply->owner->reputation);
+        $this->assertEquals(Reputation::REPLY_POSTED + Reputation::BEST_REPLY_AWARDED, $reply->owner->reputation);
     }
 }

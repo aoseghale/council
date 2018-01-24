@@ -3,7 +3,6 @@
 namespace App\Filters;
 
 use App\User;
-use Illuminate\Http\Request;
 
 class ThreadFilters extends Filters
 {
@@ -35,7 +34,7 @@ class ThreadFilters extends Filters
     }
 
     /**
-     * Filter the query to display unanswered threads
+     * Filter the query to display unanswered threads.
      * @return mixed
      */
     protected function unanswered()

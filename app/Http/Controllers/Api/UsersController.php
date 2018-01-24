@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $search = request('name');
 
         return User::where('name', 'LIKE', "$search%")

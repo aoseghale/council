@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: okhae
  * Date: 7/24/17
- * Time: 4:36 PM
+ * Time: 4:36 PM.
  */
 
 namespace App;
@@ -12,7 +12,9 @@ trait RecordsActivity
 {
     protected static function bootRecordsActivity()
     {
-        if (auth()->guest()) return;
+        if (auth()->guest()) {
+            return;
+        }
 
         foreach (static::getActivitiesToRecord() as $event) {
             static::$event(function ($model) use ($event) {
@@ -38,10 +40,10 @@ trait RecordsActivity
         ]);
     }
 
-     public function activity()
-     {
-         return $this->morphMany('App\Activity', 'subject');
-     }
+    public function activity()
+    {
+        return $this->morphMany('App\Activity', 'subject');
+    }
 
     protected function getActivityType($event)
     {

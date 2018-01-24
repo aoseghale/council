@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: okhae
  * Date: 7/22/17
- * Time: 8:24 PM
+ * Time: 8:24 PM.
  */
 
 namespace App;
-
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,7 +20,7 @@ trait Favoritable
     }
 
     /**
-     * A reply has favorites
+     * A reply has favorites.
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
@@ -39,7 +38,7 @@ trait Favoritable
     {
         $attributes = ['user_id' => auth()->id()];
 
-        if (!$this->favorites()->where($attributes)->exists()) {
+        if (! $this->favorites()->where($attributes)->exists()) {
             Reputation::award(auth()->user(), Reputation::REPLY_FAVORITED);
 
             return $this->favorites()->create($attributes);
@@ -64,7 +63,7 @@ trait Favoritable
 
     public function isFavorited()
     {
-        return !!$this->favorites->where('user_id', auth()->id())->count();
+        return (bool) $this->favorites->where('user_id', auth()->id())->count();
     }
 
     public function getIsFavoritedAttribute()

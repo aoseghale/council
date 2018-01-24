@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Favorite;
-use App\RecordsActivity;
 use App\Reply;
+use App\Favorite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class FavoritesController extends Controller
 {

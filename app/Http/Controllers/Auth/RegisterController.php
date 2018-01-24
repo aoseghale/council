@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Mail\PleaseConfirmYourEmail;
 use App\User;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Mail\PleaseConfirmYourEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -76,7 +76,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
 //            'confirmation_token' => $token,
-            'confirmation_token' => str_limit(md5($data['email'] . str_random()), 25, ''),
+            'confirmation_token' => str_limit(md5($data['email'].str_random()), 25, ''),
         ]);
     }
 

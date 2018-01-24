@@ -68,7 +68,7 @@ class User extends Authenticatable
 
     /**
      * Get all activity for the user.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function activity()
@@ -95,7 +95,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Determine if the user is an administrator
+     * Determine if the user is an administrator.
      *
      * @return bool
      */
@@ -105,7 +105,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Record that the user has read the given thread
+     * Record that the user has read the given thread.
      *
      * @param Thread $thread
      */
@@ -118,7 +118,7 @@ class User extends Authenticatable
 
     public function getAvatarPathAttribute($avatar_path)
     {
-        return asset($avatar_path ? 'storage/'. $avatar_path : 'images/avatars/default.png');
+        return asset($avatar_path ? 'storage/'.$avatar_path : 'images/avatars/default.png');
     }
 
     /**
@@ -129,6 +129,6 @@ class User extends Authenticatable
      */
     public function visitedThreadCacheKey($thread)
     {
-        return sprintf("users.%s.visits.%s", $this->id, $thread->id);
+        return sprintf('users.%s.visits.%s', $this->id, $thread->id);
     }
 }

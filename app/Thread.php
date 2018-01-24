@@ -2,10 +2,9 @@
 
 namespace App;
 
-use App\Events\ThreadHasNewReply;
+use Laravel\Scout\Searchable;
 use App\Events\ThreadReceivedNewReply;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
 
 class Thread extends Model
 {
@@ -14,7 +13,7 @@ class Thread extends Model
     protected $guarded = [];
 
     /**
-     * The relationships to always eager-load
+     * The relationships to always eager-load.
      *
      * @var array
      */
@@ -31,9 +30,6 @@ class Thread extends Model
         'locked' => 'boolean',
     ];
 
-    /**
-     *
-     */
     protected static function boot()
     {
         parent::boot();
@@ -125,7 +121,6 @@ class Thread extends Model
 //            }
 //        }
 
-
         return $reply;
     }
 
@@ -134,12 +129,12 @@ class Thread extends Model
 //    {
 //        $this->subscriptions
 //            ->where('user_id', '!=', $reply->user_id)
-////            ->filter(function ($sub) use ($reply) {
-////                return $sub->user_id != $reply->user_id;
-////            })
-////            ->each(function ($sub) use ($reply) {
-////                $sub->notify($reply));
-////            });
+    ////            ->filter(function ($sub) use ($reply) {
+    ////                return $sub->user_id != $reply->user_id;
+    ////            })
+    ////            ->each(function ($sub) use ($reply) {
+    ////                $sub->notify($reply));
+    ////            });
 //            ->each
 //            ->notify($reply);
 //    }
@@ -166,7 +161,7 @@ class Thread extends Model
     }
 
     /**
-     * Unsubscribe a user from the current thread
+     * Unsubscribe a user from the current thread.
      *
      * @param null $userId
      */
@@ -178,7 +173,7 @@ class Thread extends Model
     }
 
     /**
-     * A thread can have many subscriptions
+     * A thread can have many subscriptions.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -190,7 +185,7 @@ class Thread extends Model
     /**
      * Determine if the current user is subscribed to the thread.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsSubscribedToAttribute()
     {
@@ -237,7 +232,7 @@ class Thread extends Model
         $count = 2;
 
         while (static::whereSlug($slug)->exists()) {
-            $slug = "{$original}-" . $count++;
+            $slug = "{$original}-".$count++;
         }
 
         $this->attributes['slug'] = $slug;
@@ -256,13 +251,13 @@ class Thread extends Model
     }
 
     /**
-     * Get the indexable data array for the model
+     * Get the indexable data array for the model.
      *
      * @return array
      */
     public function toSearchableArray()
     {
-        return $this->toArray() + ['path' => $this->path(),];
+        return $this->toArray() + ['path' => $this->path()];
     }
 
     public function getBodyAttribute($body)

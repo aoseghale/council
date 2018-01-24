@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreatePostRequest;
 use App\Reply;
 use App\Thread;
+use App\Http\Requests\CreatePostRequest;
 
 class RepliesController extends Controller
 {
@@ -19,7 +19,7 @@ class RepliesController extends Controller
     }
 
     /**
-     * @param integer $channelId
+     * @param int $channelId
      * @param Thread $thread
      * @param CreatePostRequest $request
      * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Http\RedirectResponse
@@ -77,7 +77,7 @@ class RepliesController extends Controller
     {
         $this->authorize('update', $reply);
 
-        request()->validate(['body' => 'required|spamfree',]);
+        request()->validate(['body' => 'required|spamfree']);
 
         // $reply->update(['body' => request('body')]);
         $reply->update(request(['body']));

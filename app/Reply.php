@@ -41,7 +41,7 @@ class Reply extends Model
     }
 
     /**
-     * A reply has an owner
+     * A reply has an owner.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -51,7 +51,7 @@ class Reply extends Model
     }
 
     /**
-     * A reply belongs to a thread
+     * A reply belongs to a thread.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -71,7 +71,7 @@ class Reply extends Model
     }
 
     /**
-     * Fetch all mentioned users within the reply's body
+     * Fetch all mentioned users within the reply's body.
      *
      * @return array
      */
@@ -79,17 +79,17 @@ class Reply extends Model
     {
         preg_match_all('/@([\w\-]+)/', $this->body, $matches);
 
-         return $matches[1];
+        return $matches[1];
     }
 
     /**
-     * Determine the path to the reply
+     * Determine the path to the reply.
      *
      * @return string
      */
     public function path()
     {
-        return $this->thread->path() . "#reply-{$this->id}";
+        return $this->thread->path()."#reply-{$this->id}";
     }
 
     /**
@@ -99,7 +99,7 @@ class Reply extends Model
      */
     public function setBodyAttribute($body)
     {
-       $this->attributes['body'] = preg_replace(
+        $this->attributes['body'] = preg_replace(
            '/@([\w\-]+)/',
            '<a href="/profiles/$1">$0</a>',
            $body);

@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
+use App\User;
 use App\Events\ThreadReceivedNewReply;
 use App\Notifications\YouWereMentioned;
-use App\User;
 
 class NotifyMentionedUsers
 {
@@ -27,8 +27,8 @@ class NotifyMentionedUsers
     public function handle(ThreadReceivedNewReply $event)
     {
         // Inspect the body of the reply for username mentions
-////        preg_match_all('/\@([^\s\.]+)/', $event->reply->body, $matches);
-////        $names = $matches[1];
+        ////        preg_match_all('/\@([^\s\.]+)/', $event->reply->body, $matches);
+        ////        $names = $matches[1];
 //        $mentionedUsers = $event->reply->mentionedUsers();
 //
 //        // And then for each mentioned user, notify them.

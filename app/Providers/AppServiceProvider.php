@@ -15,8 +15,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Can use *, view name e.g threads.create, or [ ] or views
-        \View::composer('*', function($view) {
-            $channels = \Cache::rememberForever('channels', function() {
+        \View::composer('*', function ($view) {
+            $channels = \Cache::rememberForever('channels', function () {
                 return Channel::all();
             });
 

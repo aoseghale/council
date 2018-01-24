@@ -29,6 +29,5 @@ class NotifySubscribers
 //            });
             ->each
             ->notify($event->reply);
-
     }
 }

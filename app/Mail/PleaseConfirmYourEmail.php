@@ -12,7 +12,7 @@ class PleaseConfirmYourEmail extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
 
     /**
-     * NOTE: In Mailables, all public properties are available to the view
+     * NOTE: In Mailables, all public properties are available to the view.
      * @var
      */
     public $user;

@@ -22,6 +22,20 @@
             this.resetForm();
         },
 
+        mounted () {
+            this.highlight(this.$refs.body);
+        },
+
+        watch: {
+            editing() {
+                if (this.editing) return;
+
+                this.$nextTick(() => {
+                    this.highlight(this.$refs.body);
+                });
+            }
+        },
+
         methods: {
             toggleLock() {
                 let uri = `/locked-threads/${this.dataThread.slug}`;

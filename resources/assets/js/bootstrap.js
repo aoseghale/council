@@ -64,6 +64,22 @@ window.Vue.prototype.authorize = function(...params) {
 
 Vue.prototype.signedIn = window.App.signedIn;
 
+/**
+ * We'll load highlight.js library which allows us to easily enable syntax
+ * highlighting within <pre><code> blocks. It also allows highlighting
+ * within custom html blocks with a wide variety of color schemes.
+ */
+
+let Highlighter = require('highlight.js');
+require('highlight.js/styles/foundation.css'); // load Foundation style
+
+Vue.prototype.highlight = function (block) {
+    if (! block) return;
+
+    block.querySelectorAll('pre').forEach(
+        node => Highlighter.highlightBlock(node)
+    );
+};
 
 window.events = new Vue();
 

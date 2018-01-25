@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <div class="panel-body" v-html="body">
+    <div ref="body" class="panel-body" v-html="body">
     </div>
 
     <div class="panel-footer" v-if="authorize('owns', dataThread)">

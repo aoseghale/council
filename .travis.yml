@@ -2,19 +2,21 @@ language: php
 
 php:
   - 7.1
+# Additionally, run in 7.2
+  - 7.2
 
 before_script:
   - cp .env.travis .env
-  - composer self-update
+#  - composer self-update
   - composer install --no-interaction
-
-script:
+#
+#script:
   - php artisan key:generate
-  - vendor/bin/phpunit
+ # - vendor/bin/phpunit
 
 services:
   - redis-server
 
 cache:
   directories:
-    - vendor
+#    - vendor

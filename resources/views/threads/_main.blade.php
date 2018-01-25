@@ -49,7 +49,8 @@
         </div>
     </div>
 
-    <div ref="body" class="panel-body" v-html="body">
+    <div class="panel-body">
+        <highlight :content="body"></highlight>
     </div>
 
     <div class="panel-footer" v-if="authorize('owns', dataThread)">

@@ -27,7 +27,8 @@
                 </form>
             </div>
 
-            <div ref="body" v-else v-html="body">
+            <div v-else>
+                <highlight :content="body"></highlight>
             </div>
         </div>
 
@@ -44,12 +45,13 @@
 
 <script>
     import Favorite from "./Favorite.vue";
+    import Highlight from "./Highlight.vue";
     import moment from 'moment';
 
     export default {
         props: ['reply'],
 
-        components: { Favorite },
+        components: { Favorite, Highlight },
 
         data() {
             return {
@@ -72,19 +74,19 @@
             });
         },
 
-        mounted() {
-            this.highlight(this.$refs['body']);
-        },
+        // mounted() {
+        //     this.highlight(this.$refs['body']);
+        // },
 
-        watch: {
-            editing() {
-                if (this.editing) return;
-
-                this.$nextTick(() => {
-                    this.highlight(this.$refs['body']);
-                });
-            }
-        },
+        // watch: {
+        //     editing() {
+        //         if (this.editing) return;
+        //
+        //         this.$nextTick(() => {
+        //             this.highlight(this.$refs['body']);
+        //         });
+        //     }
+        // },
 
         methods: {
             update() {

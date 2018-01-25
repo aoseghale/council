@@ -70,17 +70,6 @@ Vue.prototype.signedIn = window.App.signedIn;
  * within custom html blocks with a wide variety of color schemes.
  */
 
-let Highlighter = require('highlight.js');
-require('highlight.js/styles/foundation.css'); // load Foundation style
-
-Vue.prototype.highlight = function (block) {
-    if (! block) return;
-
-    block.querySelectorAll('pre').forEach(
-        node => Highlighter.highlightBlock(node)
-    );
-};
-
 window.events = new Vue();
 
 window.flash = function (message, level = 'success') {
